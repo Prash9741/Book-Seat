@@ -1,0 +1,290 @@
+/* GLOBAL */
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont,
+    "SF Pro Text","SF Pro Display","Helvetica Neue",Arial,sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f4;
+  color: #1c1c1e;
+  font-weight: 600;
+}
+
+/* TOP BAR */
+.top-bar-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  background: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  gap: 10px;
+  z-index: 100;
+}
+
+.header-pill {
+  height: 44px;
+  background: #fff;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px 0 12px;
+  gap: 10px;
+  flex: 1;
+}
+
+.back-arrow { font-size: 18px; }
+.header-title { font-size: 16px; font-weight: 500; }
+
+.circle-btn {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HEADER DIVIDER */
+.header-divider {
+  position: fixed;
+  top: 64px;
+  width: 100%;
+  height: 1px;
+  background: #e5e5ea;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  z-index: 99;
+
+}
+
+/* APP */
+.app {
+  padding-top: 78px;
+  padding-bottom: 140px;
+}
+
+/* BLUE NOTICE */
+.info-card {
+  margin: -3px 12px;
+  padding: 18px 10px;
+  background: #e9f2ff;
+  border-radius: 14px;
+  font-size: 13px;
+}
+
+.info-card a {
+  color: #007aff;
+}
+
+/* SECTIONS */
+.section {
+  padding: 0px 14px;
+}
+
+.section h2 {
+  font-size: 15px;
+  color: #3c3c43;
+  margin:15px 0;
+}
+
+.bookedSlot{
+    width:85%;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    row-gap: 16px;
+}
+.bookedSlot .datePanel{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bookedSlot .datePanel .book{
+    /* background-color: red; */
+
+    background-color: #dff6dd;
+    color:#0b8034;
+    padding:5px;
+    border-radius:6px;
+}
+
+.editable-text {
+  cursor: pointer;
+}
+
+.edit-input,
+.edit-textarea {
+  width: 100%;
+  padding: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.edit-actions {
+  margin-top: 6px;
+}
+
+.edit-actions button {
+  padding: 4px 12px;
+  font-size: 12px;
+  background: #368de3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+/* DATE */
+.date-row {
+  display: flex;
+  gap: 12px;
+}
+
+.date-card {
+  width: 100px;
+  height: 80px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #dcdcdc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+ 
+}
+
+.date-card span {
+  color: #383042; 
+  font-size: 14px;
+}
+.date-card.active { background: #f1e9ff; border-color: #b38cff; }
+
+/* SUMMARY */
+.summary-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0 0 0 5px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-btn.disabled { color: #8e8e93; }
+
+.summary-icon { color: #6e6e73; }
+
+/* DIVIDER */
+.thin-divider {
+  height: 1.5px;
+  background: #d1d1d6;
+  margin: 20px 0 0 0;
+}
+
+/* DEVELOPMENT CENTER */
+.dc-section {
+  position: relative;
+  padding-top: 20px;
+}
+
+.dc-vertical-bar {
+  position: absolute;
+  left: 14px;
+  top: 48px;
+  bottom: 48px;
+  width: 2px;
+  background: #d1d1d6;
+}
+
+.dc-horizontal-line {
+  height: 1px;
+  background: #d1d1d6;
+  margin: 6px 0;
+}
+
+.dc-horizontal-line.bottom {
+  margin-top: 16px;
+}
+
+.dc-name {
+  color: #8e67e1;
+  font-weight: 600;
+}
+
+.dc-content { display: none; }
+.dc-content.open { display: block; }
+
+/* BUILDINGS */
+.building { margin-top:30px; }
+.building p { font-size: 14px;  }
+
+/* SLOTS */
+.slots {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+/* First two slots together = 80% */
+.slot-main {
+  flex: 9;              /* 4 + 4 = 8 */
+}
+
+/* Third slot = 20% */
+.slot-side {
+  flex: 1;              /* total = 10 → 20% */
+  visibility: hidden;   /* keeps space but hides content */
+}
+
+/* Common slot styles stay same */
+.slot {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.slot small { font-size: 15px; }
+.slot.disabled { color: #d32f2f; }
+
+/* FLOATING CTA (NO SHADOW) */
+.bottom-wrapper {
+  position: fixed;
+  display: flex;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f4;
+  padding: 24px;
+}
+
+.bottom-btn {
+  width: 100%;
+  height: 64px;
+  background: #7e7e7e;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+}
