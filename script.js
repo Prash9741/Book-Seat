@@ -67,7 +67,6 @@ function selectDate(selectedCard) {
   );
 
   selectedCard.classList.add("active");
-  updateBookingDate(new Date(selectedCard.dataset.date));
 }
 
 /* =======================
@@ -136,12 +135,9 @@ document.addEventListener("dblclick", function (e) {
    INIT
 ======================= */
 
-renderDateCards(3);
+renderDateCards(2);
 
-function test() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-  } else {
-    document.exitFullscreen();
-  }
-}
+document.getElementById("generateBlock").addEventListener("dblclick", function () {
+  let k=prompt("Enter the number slot");
+  renderDateCards(parseInt(k));
+})
