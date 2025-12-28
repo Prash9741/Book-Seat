@@ -9,7 +9,7 @@ body {
   margin: 0;
   background: #f4f4f4;
   color: #1c1c1e;
-  font-weight: 600;
+  /* font-weight: 600; */
 }
 
 /* TOP BAR */
@@ -76,10 +76,11 @@ body {
   background: #e9f2ff;
   border-radius: 14px;
   font-size: 13px;
+  font-weight: 600;
 }
 
 .info-card a {
-  color: #007aff;
+  color: #2988dc;
 }
 
 /* SECTIONS */
@@ -105,6 +106,10 @@ body {
     justify-content: center;
     row-gap: 16px;
 }
+.bookedSlot > :first-child {
+    margin-bottom: -10px; /* custom gap for first row */
+}
+
 .bookedSlot .datePanel{
     display: flex;
     justify-content: space-between;
@@ -122,6 +127,9 @@ body {
 
 .editable-text {
   cursor: pointer;
+}
+.seatNo{
+  font-weight: 600;
 }
 
 .edit-input,
@@ -275,12 +283,12 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #f4f4f4;
-  padding: 24px;
+  padding: 24px 24px 30px 24px;
 }
 
 .bottom-btn {
   width: 100%;
-  height: 64px;
+  height: 50px;
   background: #7e7e7e;
   border: none;
   border-radius: 14px;
