@@ -78,7 +78,7 @@ function toggleDC(btn) {
   const icon = btn.querySelector(".summary-icon");
   const dcName = btn.querySelector("#dc-name");
   content.classList.toggle("open");
-  dcName.classList.toggle("dc-name");
+  dcName.classList.toggle("dc-name-active");
   icon.textContent = content.classList.contains("open") ? "^" : "v";
 }
 

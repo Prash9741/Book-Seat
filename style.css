@@ -227,9 +227,12 @@ body {
 }
 
 .dc-name {
+  color: #3C3C43;
+  font-weight: 600;
+}
+.dc-name-active {
   color: #8e67e1;
 }
-
 .dc-content { display: none; }
 .dc-content.open { display: block; }
 
