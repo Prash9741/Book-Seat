@@ -76,8 +76,9 @@ function selectDate(selectedCard) {
 function toggleDC(btn) {
   const content = btn.nextElementSibling;
   const icon = btn.querySelector(".summary-icon");
-
+  const dcName = btn.querySelector("#dc-name");
   content.classList.toggle("open");
+  dcName.classList.toggle("dc-name");
   icon.textContent = content.classList.contains("open") ? "^" : "v";
 }
 
