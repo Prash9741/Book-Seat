@@ -299,6 +299,12 @@ body {
   color: white;
 }
 
-.back-arrow a{
+.back-arrow a,
+.back-arrow a:link,
+.back-arrow a:visited,
+.back-arrow a:hover,
+.back-arrow a:active,
+.back-arrow a:focus {
   text-decoration: none;
+  color:black;
 }
