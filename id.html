@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            color:white;
+            font-family: -apple-system, BlinkMacSystemFont,
+    "SF Pro Text","SF Pro Display","Helvetica Neue",Arial,sans-serif
+        }
+        body{
+            background-color:black;
+        }
+        .header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color:#8e67e1;
+            padding:1.5% 6%;
+            font-weight: bold;
+        }
+        .header span:nth-child(3){
+            visibility: hidden;
+        }
+        .profile,.image, .barcodeBox{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        .profileImage{
+            border:2px solid red;
+        }
+        .photo{
+            width: 45%;
+            aspect-ratio: 1 / 1; 
+        }
+        .title{
+            width: 30%;
+            background-color:white;
+            margin-top:8%;
+            margin-bottom:10%;
+        }
+        .barcode {
+            display: flex;
+            height: 40px;
+            background: #000;   
+            margin:7%;
+        }
+
+        .bar {
+            height: 100%;
+        }
+
+        .bar.one {
+            background: #000;
+            width: 1px;   /* bar width */
+        }
+        
+        .bar.zero {
+            background: #fff;
+            width: 1px;   /* gap width */
+        }
+        .profile{
+            font-size:75%;
+        }
+        .profile div{
+            margin:.5%;
+        }
+        #name{
+            margin:1%;
+            font-size:1.3em;
+        }
+        #backBtn img{
+            height:30px;
+            width:30px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header">
+            <span id="backBtn">
+                <a href="index.html"><img src="download.svg" alt="Back"></a>
+            </span>
+            <span>MY ID CARD</span>
+            <span>right</span>
+        </div>
+        <div class="image">
+            <img class="title" src="title.png" alt="">
+            <img class="photo" src="photo.png" alt="">
+        </div>
+        <div class="barcodeBox">
+            <div class="barcode" id="barcode"></div>
+        </div>
+        <div class="profile">
+            <div id="name">Abhishek Saini</div>
+            <div>1288628</div>
+            <div>Refreshed On</div>
+            <div id="today"></div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+  const binary = "01001111010010101100110001101100101101011111110110111100101011111111011000111011001011111011110101111100101010001001000011001011010110000101100010011000110010110100110001001100100011001100110100";
+  const barcode = document.getElementById("barcode");
+
+  for (const bit of binary) {
+    const bar = document.createElement("div");
+    bar.className = "bar " + (bit === "1" ? "one" : "zero");
+    barcode.appendChild(bar);
+  }
+    const today = new Date();
+
+  const formattedDate = today.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  }).replace(/ /g, "-");
+
+  document.getElementById("today").innerHTML = formattedDate;
+</script>
