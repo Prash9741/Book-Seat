@@ -86,24 +86,44 @@ function toggleDC(btn) {
    INLINE EDIT (dblclick)
 ======================= */
 
+/* =======================
+   INLINE EDIT (dblclick)
+======================= */
+
 document.addEventListener("dblclick", function (e) {
   const target = e.target.closest(".editable-text");
   if (!target) return;
 
   // Prevent reopening editor
-  if (target.querySelector("input, textarea")) return;
+  if (target.querySelector("select, input")) return;
 
-  const originalText = target.textContent.trim();
+  const originalText = target.dataset.value || target.textContent.trim();
 
-  const isMultiLine =
-    originalText.length > 25 || originalText.includes(",");
+  // ✅ Get options from HTML data-options
+  let options = [];
+  try {
+    options = JSON.parse(target.dataset.options);
+  } catch (err) {
+    console.error("Invalid data-options JSON", err);
+    return;
+  }
 
-  const input = isMultiLine
-    ? document.createElement("textarea")
-    : document.createElement("input");
+  const select = document.createElement("select");
+  select.className = "edit-select";
 
-  input.value = originalText;
-  input.className = isMultiLine ? "edit-textarea" : "edit-input";
+  options.forEach(opt => {
+    const option = document.createElement("option");
+    option.value = opt;
+    option.textContent = opt;
+    if (opt === originalText) option.selected = true;
+    select.appendChild(option);
+  });
+
+  const customInput = document.createElement("input");
+  customInput.type = "text";
+  customInput.placeholder = "Enter custom value";
+  customInput.className = "edit-input";
+  customInput.style.display = "none";
 
   const okBtn = document.createElement("button");
   okBtn.textContent = "OK";
@@ -112,24 +132,32 @@ document.addEventListener("dblclick", function (e) {
   actions.className = "edit-actions";
   actions.appendChild(okBtn);
 
-  target.textContent = "";
-  target.appendChild(input);
+  target.innerHTML = "";
+  target.appendChild(select);
+  target.appendChild(customInput);
   target.appendChild(actions);
 
-  input.focus();
+  select.addEventListener("change", () => {
+    if (select.value === "Custom") {
+      customInput.style.display = "block";
+      customInput.focus();
+    } else {
+      customInput.style.display = "none";
+    }
+  });
 
   okBtn.onclick = () => {
-    const newValue = input.value.trim() || originalText;
+    let newValue;
+
+    if (select.value === "Custom") {
+      newValue = customInput.value.trim() || originalText;
+    } else {
+      newValue = select.value;
+    }
+
     target.textContent = newValue;
     target.dataset.value = newValue;
   };
-
-  // Save on Enter (single-line)
-  input.addEventListener("keydown", (ev) => {
-    if (ev.key === "Enter" && input.tagName === "INPUT") {
-      okBtn.click();
-    }
-  });
 });
 
 /* =======================
